@@ -85,7 +85,7 @@ and 4 dimentional tables, each with a primary key that is being referenced from 
 
 1. **data** This is the folder in the repository which contains all the data.
 2. **sql_queries.py** All the sql queries are written in this file.
-3. **create_tables.py** The tables are created and dropped in this file using sql queries written in create_tables.py. The tables need to be     reset everytime the ETL script(see no. 5 or 6) is rerun.
+3. **create_tables.py** The tables are created and dropped in this file using sql queries written in create_tables.py. The tables need to be reset everytime the ETL script(see no. 5 or 6) is rerun.
 4. **test.ipynb** This python notebook displays the first few rows of each table to check that the data is inserted into the tables.
 5. **etl.ipynb** reads and processes a single file from song_data and log_data and loads the data into your tables. 
 6. **etl.py** reads and processes files from song_data and log_data and loads them into your tables. 
@@ -127,28 +127,26 @@ python create_tables.py
 ```
 In this python file three functions are written:
 
-create_database()
-drop_tables(cur, conn)
-create_tables(cur, conn)
+1. create_database()
+2. drop_tables(cur, conn)
+3. create_tables(cur, conn)
 
 The function create_database creates a connection to the database and return connection and cursor object. 
 The functions drop_tables and create_tables drop and create the tables in the database by taking in conn and cur objects as input. 
 
 These functions are called in the main function below for execution of their respective tasks:
 
-def main():
-    """ Function to drop and re create sparkifydb database and all related tables.
-        Usage: python create_tables.py
-    """
+def main():<br/>
+    """ Function to drop and re create sparkifydb database and all related tables. Usage: python create_tables.py """
+    
     cur, conn = create_database()
     
     drop_tables(cur, conn)
     create_tables(cur, conn)
-
     conn.close()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": <br/>
     main()
 
  ```
