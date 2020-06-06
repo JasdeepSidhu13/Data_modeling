@@ -127,9 +127,9 @@ python create_tables.py
 ```
 In this python file three functions are written:
 
-create_database()
-drop_tables(cur, conn)
-create_tables(cur, conn)
+-create_database()
+-drop_tables(cur, conn)
+-create_tables(cur, conn)
 
 The function create_database creates a connection to the database and return connection and cursor object. 
 The functions drop_tables and create_tables drop and create the tables in the database by taking in conn and cur objects as input. 
@@ -140,16 +140,16 @@ def main():
     """ Function to drop and re create sparkifydb database and all related tables.
         Usage: python create_tables.py
     """
-    cur, conn = create_database()
+    -cur, conn = create_database()
     
-    drop_tables(cur, conn)
-    create_tables(cur, conn)
+    -drop_tables(cur, conn)
+    -create_tables(cur, conn)
 
-    conn.close()
+    -conn.close()
 
 
-if __name__ == "__main__":
-    main()
+-if __name__ == "__main__":
+    -main()
 
  ```
 python etl.py
