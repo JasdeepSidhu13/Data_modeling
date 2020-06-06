@@ -108,12 +108,12 @@ user_table_create = (""" <br/>
 """)
 Following the same procedure, other tables of the star schema(listed in section Database Schema) are also created. Then continuing with the example, data is inserted into the user table as follows: <br/>
 
-user_table_insert = ("""
-    INSERT INTO users
-    (user_id, first_name, last_name, gender, level)
-    VALUES (%s, %s, %s, %s, %s)
-    ON CONFLICT (user_id) DO NOTHING;
-""")
+user_table_insert = (""" <br/>
+    INSERT INTO users  <br/>
+    (user_id, first_name, last_name, gender, level) <br/>
+    VALUES (%s, %s, %s, %s, %s) <br/>
+    ON CONFLICT (user_id) DO NOTHING; <br/>
+""")<br/>
 
 Here the %s in VALUES act as placeholders for the data, which is comprised of user_id, first_name, last_name, gender, and  level respectively.<br/>
 
@@ -156,7 +156,7 @@ python etl.py
 ## ETL pipeline
 
 Note: Before running(rerunning) etl.py and/or etl.pynb, database and tables need to be created(updated) each time by running 
-python create_tables.py
+python create_tables.py <br/>
 
 Some of the Key components in etl.pynb and etl.py are:
 
