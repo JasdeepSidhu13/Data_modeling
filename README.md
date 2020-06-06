@@ -105,7 +105,8 @@ user_table_create = (""" <br/>
     last_name text NOT NULL, <br/>
     gender text, <br/>
     level text) <br/>
-""")
+""") <br/>
+
 Following the same procedure, other tables of the star schema(listed in section Database Schema) are also created. Then continuing with the example, data is inserted into the user table as follows: <br/>
 
 user_table_insert = (""" <br/>
