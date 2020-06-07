@@ -96,45 +96,46 @@ and 4 dimentional tables, each with a primary key that is being referenced from 
 python sql_queries.py
 ```
 
-In the python file sql_queries.py the DROP, CREATE and INSERT query statements are first written. Below an example can be seen where a user table is created using SQl query "CREATE TABLE IF NOT EXISTS name_of_the_table". The various columns in the table with their respective data type are then listed such as user id which is an integer. It is also declared as a PRIMARY KEY.
+In the python file sql_queries.py the DROP, CREATE and INSERT query statements are first written. Below an example can be seen where a user table is created using SQl query "CREATE TABLE IF NOT EXISTS name_of_the_table". The various columns in the table with their respective data type are then listed such as user id which is an integer. It is also declared as a PRIMARY KEY. <br/>
 
-user_table_create = ("""
-    CREATE TABLE IF NOT EXISTS users
-    (user_id int PRIMARY KEY, 
-    first_name text NOT NULL, 
-    last_name text NOT NULL, 
-    gender text, 
-    level text)
-""")
-Following the same procedure, other tables of the star schema(listed in section Database Schema) are also created. Then continuing with the example, data is inserted into the user table as follows:
+user_table_create = (""" <br/>
+    CREATE TABLE IF NOT EXISTS users <br/>
+    (user_id int PRIMARY KEY,  <br/>
+    first_name text NOT NULL, <br/>
+    last_name text NOT NULL, <br/>
+    gender text, <br/>
+    level text) <br/>
+""") <br/>
 
-user_table_insert = ("""
-    INSERT INTO users
-    (user_id, first_name, last_name, gender, level)
-    VALUES (%s, %s, %s, %s, %s)
-    ON CONFLICT (user_id) DO NOTHING;
-""")
+Following the same procedure, other tables of the star schema(listed in section Database Schema) are also created. Then continuing with the example, data is inserted into the user table as follows: <br/>
 
-Here the %s in VALUES act as placeholders for the data, which is comprised of user_id, first_name, last_name, gender, and  level respectively.
+user_table_insert = (""" <br/>
+    INSERT INTO users  <br/>
+    (user_id, first_name, last_name, gender, level) <br/>
+    VALUES (%s, %s, %s, %s, %s) <br/>
+    ON CONFLICT (user_id) DO NOTHING; <br/>
+""")<br/>
 
-Same procedure is used for all the other tables in the schema. Finally, a general create table and drop table list is created which contains all the queries for each table in the schema:
+Here the %s in VALUES act as placeholders for the data, which is comprised of user_id, first_name, last_name, gender, and  level respectively.<br/>
 
-create_table_queries = [user_table_create, artist_table_create, song_table_create, time_table_create, songplay_table_create]
-drop_table_queries = [user_table_drop, artist_table_drop, song_table_drop, time_table_drop, songplay_table_drop]
+Same procedure is used for all the other tables in the schema. Finally, a general create table and drop table list is created which contains all the queries for each table in the schema:<br/>
+
+create_table_queries = [user_table_create, artist_table_create, song_table_create, time_table_create, songplay_table_create] <br/>
+drop_table_queries = [user_table_drop, artist_table_drop, song_table_drop, time_table_drop, songplay_table_drop] <br/>
 
  ```
 python create_tables.py
 ```
-In this python file three functions are written:
+In this python file three functions are written: 
 
 1. create_database()
 2. drop_tables(cur, conn)
 3. create_tables(cur, conn)
 
-The function create_database creates a connection to the database and return connection and cursor object. 
-The functions drop_tables and create_tables drop and create the tables in the database by taking in conn and cur objects as input. 
+The function create_database creates a connection to the database and return connection and cursor object. <br/>
+The functions drop_tables and create_tables drop and create the tables in the database by taking in conn and cur objects as input. <br/>
 
-These functions are called in the main function below for execution of their respective tasks:
+These functions are called in the main function below for execution of their respective tasks:<br/>
 
 def main():<br/>
     """ Function to drop and re create sparkifydb database and all related tables. Usage: python create_tables.py """
@@ -156,7 +157,7 @@ python etl.py
 ## ETL pipeline
 
 Note: Before running(rerunning) etl.py and/or etl.pynb, database and tables need to be created(updated) each time by running 
-python create_tables.py
+python create_tables.py <br/>
 
 Some of the Key components in etl.pynb and etl.py are:
 
