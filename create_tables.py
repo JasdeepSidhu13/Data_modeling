@@ -4,9 +4,20 @@ from sql_queries import create_table_queries, drop_table_queries
 
 def create_database():
     """
+     Description: This function does the following:
+     
     - Creates and connects to the sparkifydb
     - Returns the connection and cursor to sparkifydb
+
+    Arguments:
+    
+    None 
+
+    Returns:
+    
+    cur, conn
     """
+ 
     
     # connect to default database
     conn = psycopg2.connect("host=127.0.0.1 dbname=studentdb user=student password=student")
@@ -29,7 +40,16 @@ def create_database():
 
 def drop_tables(cur, conn):
     """
-    Drops each table using the queries in `drop_table_queries` list.
+    Description: Drops each table using the queries in `drop_table_queries` list
+    
+    Arguments:
+    
+    conn: the connection object
+    cur: the cursor object
+    
+    Returns:
+    
+    None
     """
     for query in drop_table_queries:
         cur.execute(query)
@@ -38,7 +58,17 @@ def drop_tables(cur, conn):
 
 def create_tables(cur, conn):
     """
-    Creates each table using the queries in `create_table_queries` list. 
+    Description: Creates each table using the queries in `create_table_queries` list.
+    
+    Arguments:
+    
+    conn: the connection object
+    cur: the cursor object
+    
+    Returns:
+    
+     None
+     
     """
     for query in create_table_queries:
         cur.execute(query)
@@ -47,16 +77,24 @@ def create_tables(cur, conn):
 
 def main():
     """
-    - Drops (if exists) and Creates the sparkify database. 
+    Description: This is the main functon which implements the following:
     
+    - Drops (if exists) and Creates the sparkify database. 
     - Establishes connection with the sparkify database and gets
     cursor to it.  
-    
     - Drops all the tables.  
-    
-    - Creates all tables needed. 
-    
+    - Creates all tables needed.
     - Finally, closes the connection. 
+    
+    Arguments:
+    
+    None
+    
+    Returns:
+    
+    None
+       
+    
     """
     cur, conn = create_database()
     

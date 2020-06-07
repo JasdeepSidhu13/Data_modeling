@@ -6,7 +6,21 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
-    # open song file
+    
+    """
+    Description: This function reads the file in the filepath (data/song_data)
+    to get the song and artist info, and is used to populate the artists and songs dim tables.
+
+    Arguments:
+    
+    cur: the cursor object. 
+    filepath: log data file path. 
+
+    Returns:
+    
+    None
+    """
+    
     df = pd.read_json(filepath, lines=True)
     for value in df.values:
         artist_id, artist_latitude, artist_location, artist_longitude, artist_name, duration, num_songs, song_id, title, year = value
@@ -23,7 +37,19 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
-    # open log file
+    """
+    Description: This function reads the file in the filepath (data/log_data)
+    to get the user and time info, and is used to populate the users and time dim tables.
+
+    Arguments:
+    
+    cur: the cursor object. 
+    filepath: log data file path. 
+
+    Returns:
+    
+    None
+    """
     df = pd.read_json(filepath, lines=True)
 
     # filter by NextSong action
@@ -69,7 +95,21 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
-    # get all files matching extension from directory
+    """
+    Description: This function is used to get all files matching extension from directory.
+
+    Arguments:
+    
+    conn: the database connection object.
+    cur: the cursor object. 
+    filepath: log data file path. 
+    func: process_log_file or process_song_file function 
+
+    Returns:
+    
+    None
+    """
+    
     all_files = []
     for root, dirs, files in os.walk(filepath):
         files = glob.glob(os.path.join(root,'*.json'))
@@ -88,6 +128,19 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """
+    Description: This is the main function which implements all the other functions listed above 
+    by first connecting to the sparkifydb and getting a cursor object. It then implements process_data
+    function for both song_data and log_data to populate all the dimension tables.
+
+    Arguments:
+    
+    None
+
+    Returns:
+    
+    None
+    """
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
