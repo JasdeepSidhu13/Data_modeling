@@ -113,7 +113,8 @@ user_table_insert = (""" <br/>
     INSERT INTO users  <br/>
     (user_id, first_name, last_name, gender, level) <br/>
     VALUES (%s, %s, %s, %s, %s) <br/>
-    ON CONFLICT (user_id) DO NOTHING; <br/>
+    ON CONFLICT (user_id) DO UPDATE SET <br/>
+    level = EXCLUDED.level <br/>
 """)<br/>
 
 Here the %s in VALUES act as placeholders for the data, which is comprised of user_id, first_name, last_name, gender, and  level respectively.<br/>
@@ -155,7 +156,8 @@ def main():<br/>
     Returns: <br/>
     <br/>
     None
-    <br/>   
+    <br/>  
+    """ <br/>
     
     
     cur, conn = create_database()
