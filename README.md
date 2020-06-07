@@ -138,7 +138,25 @@ The functions drop_tables and create_tables drop and create the tables in the da
 These functions are called in the main function below for execution of their respective tasks:<br/>
 
 def main():<br/>
-    """ Function to drop and re create sparkifydb database and all related tables. Usage: python create_tables.py """
+ """
+    Description: This is the main functon which implements the following:<br/>
+    <br/>
+    - Drops (if exists) and Creates the sparkify database. <br/>
+    - Establishes connection with the sparkify database and gets
+    cursor to it.  <br/>
+    - Drops all the tables.  <br/>
+    - Creates all tables needed.<br/>
+    - Finally, closes the connection. <br/>
+    <br/>
+    Arguments:<br/>
+    <br/>
+    None <br/>
+    <br/>
+    Returns: <br/>
+    <br/>
+    None
+    <br/>   
+    
     
     cur, conn = create_database()
     
